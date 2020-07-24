@@ -1,0 +1,41 @@
+{
+ "autoname": "field:service_line",
+ "creation": "2020-06-14 17:13:25.745879",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_line"
+ ],
+ "fields": [
+  {
+   "fieldname": "service_line",
+   "fieldtype": "Data",
+   "label": "Service Line",
+   "unique": 1
+  }
+ ],
+ "modified": "2020-07-16 05:04:36.880598",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Service Line",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

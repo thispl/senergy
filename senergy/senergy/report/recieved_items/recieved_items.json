@@ -1,0 +1,34 @@
+{
+ "add_total_row": 0,
+ "creation": "2020-07-15 08:56:00.384592",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2020-07-17 10:31:12.866005",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Recieved Items",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n`tabStock Entry`.`company` as \"Company::200\",\n`tabStock Entry Detail`.`country` as \"Country::80\",\n`tabStock Entry`.`name` as \"Material Receipt:Link/Stock Entry:100\",\n`tabStock Entry Detail`.`item_Code` as \"Item Code::120\",\n`tabStock Entry Detail`.`item_name` as \"Item Name::250\",\n`tabStock Entry Detail`.`item_group` as \"Item Group::100\",\n`tabStock Entry Detail`.`t_warehouse` as \"Target Wareshouse::150\",\n`tabStock Entry`.`posting_date` as \"Posting Date:Date:100\",\n`tabStock Entry Detail`.`qty` as \"Qty::80\",\n`tabStock Entry Detail`.`basic_rate` as \"Rate::80\",\n`tabStock Entry Detail`.`basic_amount` as \"Amount::100\",\n`tabStock Entry Detail`.`valuation_rate` as \"Valuation Rate::100\"\nFROM\n`tabStock Entry`\nLeft Join `tabStock Entry Detail` ON `tabStock Entry`.name =`tabStock Entry Detail`.parent\nWHERE\n`tabStock Entry`.stock_entry_type='Material Receipt'",
+ "ref_doctype": "Stock Entry",
+ "report_name": "Recieved Items",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Manufacturing User"
+  },
+  {
+   "role": "Manufacturing Manager"
+  },
+  {
+   "role": "Stock Manager"
+  }
+ ]
+}

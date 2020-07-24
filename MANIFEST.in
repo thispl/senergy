@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include senergy *.css
+recursive-include senergy *.csv
+recursive-include senergy *.html
+recursive-include senergy *.ico
+recursive-include senergy *.js
+recursive-include senergy *.json
+recursive-include senergy *.md
+recursive-include senergy *.png
+recursive-include senergy *.py
+recursive-include senergy *.svg
+recursive-include senergy *.txt
+recursive-exclude senergy *.pyc

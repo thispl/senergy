@@ -1,0 +1,28 @@
+{
+ "add_total_row": 0,
+ "creation": "2020-07-17 12:35:50.436270",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2020-07-17 12:35:50.436270",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Slow Moving",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n`tabItem`.`company` as \"Company::100\",\n`tabStock Ledger Entry`.`country` as \"Country::100\",\n`tabItem`.`name` as \"Item Code:Link/Item:100\",\n`tabItem`.`item_name` as \"Item Name::300\",\n`tabItem`.`item_group` as \"Item Group::100\",\n`tabStock Ledger Entry`.warehouse as \"Warehouse::200\",\n`tabItem Supplier`.supplier as \"Supplier::150\",\n`tabItem Supplier`.supplier_part_no as \"Part No::100\",\n`tabStock Ledger Entry`.qty_after_transaction as \"Stock::100\",\n`tabStock Ledger Entry`.posting_date as \"Last Transaction Date:Date:150\",\nDATEDIFF(CURDATE(),`tabStock Ledger Entry`.posting_date) as \"Age(in Days)::100\"\nFROM\n`tabItem`\nLeft Join `tabStock Ledger Entry` ON `tabItem`.name =`tabStock Ledger Entry`.item_code\nLeft Join `tabItem Default` ON `tabItem`.name =`tabItem Default`.parent\nLeft Join `tabItem Supplier` ON `tabItem`.name =`tabItem Supplier`.parent\nWHERE\n`tabStock Ledger Entry`.posting_date < DATE_SUB(curdate(), INTERVAL 6 MONTH)\nAND\n`tabItem Default`.default_warehouse = `tabStock Ledger Entry`.warehouse\nAND\nposting_date=(\nSELECT MAX(`tabStock Ledger Entry`.posting_date) FROM `tabStock Ledger Entry` WHERE `tabStock Ledger Entry`.item_code=`tabItem`.`name`);",
+ "ref_doctype": "Stock Ledger Entry",
+ "report_name": "Slow Moving",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Accounts Manager"
+  }
+ ]
+}

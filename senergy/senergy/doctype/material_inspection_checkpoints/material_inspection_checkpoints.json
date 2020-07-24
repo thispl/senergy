@@ -1,0 +1,36 @@
+{
+ "creation": "2020-06-28 19:23:41.918585",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "point",
+  "yes_no"
+ ],
+ "fields": [
+  {
+   "fieldname": "point",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Point"
+  },
+  {
+   "default": "0",
+   "fieldname": "yes_no",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Yes / No"
+  }
+ ],
+ "istable": 1,
+ "modified": "2020-06-28 19:24:22.180384",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Material Inspection Checkpoints",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}
