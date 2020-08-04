@@ -11,9 +11,11 @@
 $(window).on('load', function() {
     // code here
     $('.dropdown-help').hide();
+    $('.legend').hide();
     // $('.app-logo').hide();
     // $('.app-logo').attr("src","https://i.imgur.com/S5R0E7V.jpg");
    })
+  
 
    $(function() {
     // Handler for .ready() called.

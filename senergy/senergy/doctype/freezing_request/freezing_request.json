@@ -1,4 +1,5 @@
 {
+ "actions": [],
  "autoname": "FR-.###",
  "creation": "2020-06-22 19:37:31.831784",
  "doctype": "DocType",
@@ -13,6 +14,7 @@
   "country",
   "column_break_2",
   "raised_by",
+  "verified_by",
   "section_break_4",
   "description",
   "workflow_state",
@@ -100,10 +102,18 @@
    "fieldname": "country",
    "fieldtype": "Read Only",
    "label": "Country"
+  },
+  {
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1
   }
  ],
  "is_submittable": 1,
- "modified": "2020-07-16 04:14:56.111612",
+ "links": [],
+ "modified": "2020-07-27 13:15:23.472971",
  "modified_by": "Administrator",
  "module": "Senergy",
  "name": "Freezing Request",
