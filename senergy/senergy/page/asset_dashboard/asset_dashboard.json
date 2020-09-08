@@ -1,0 +1,19 @@
+{
+ "content": null,
+ "creation": "2020-08-13 17:22:01.369739",
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "modified": "2020-08-13 17:22:16.792731",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "asset-dashboard",
+ "owner": "Administrator",
+ "page_name": "Asset Dashboard",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "Asset Dashboard"
+}

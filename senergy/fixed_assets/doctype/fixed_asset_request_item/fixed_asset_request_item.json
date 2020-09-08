@@ -1,0 +1,132 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2020-08-16 07:19:33.792674",
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "col_break1",
+  "schedule_date",
+  "section_break_4",
+  "description",
+  "item_group",
+  "quantity_and_warehouse",
+  "qty",
+  "more_info"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "columns": 3,
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Item Code",
+   "oldfieldname": "item_code",
+   "oldfieldtype": "Link",
+   "options": "Item",
+   "print_width": "100px",
+   "reqd": 1,
+   "search_index": 1,
+   "width": "100px"
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "label": "Item Name",
+   "oldfieldname": "item_name",
+   "oldfieldtype": "Data",
+   "print_hide": 1,
+   "print_width": "100px",
+   "search_index": 1,
+   "width": "100px"
+  },
+  {
+   "fieldname": "col_break1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "columns": 2,
+   "fieldname": "schedule_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Required By",
+   "oldfieldname": "schedule_date",
+   "oldfieldtype": "Date",
+   "print_width": "100px",
+   "reqd": 1,
+   "width": "100px"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "fetch_from": "item_code.description",
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description",
+   "oldfieldname": "description",
+   "oldfieldtype": "Text",
+   "print_width": "250px",
+   "reqd": 1,
+   "width": "250px"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Item Group",
+   "oldfieldname": "item_group",
+   "oldfieldtype": "Link",
+   "options": "Item Group",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "quantity_and_warehouse",
+   "fieldtype": "Section Break",
+   "label": "Quantity and Warehouse"
+  },
+  {
+   "columns": 1,
+   "fieldname": "qty",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Quantity",
+   "oldfieldname": "qty",
+   "oldfieldtype": "Currency",
+   "print_width": "80px",
+   "reqd": 1,
+   "width": "80px"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "more_info",
+   "fieldtype": "Section Break",
+   "label": "More Information"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2020-08-16 08:05:45.346076",
+ "modified_by": "Administrator",
+ "module": "Fixed Assets",
+ "name": "Fixed Asset Request Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

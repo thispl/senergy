@@ -1,0 +1,56 @@
+{
+ "cards": [
+  {
+   "hidden": 0,
+   "label": "Main Menu",
+   "links": "[\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Monitoring Panel\",\r\n\t\t\t\t\t\"doctype\": \"Stock Ledger Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Pending Requests\",\r\n\t\t\t\t\t\"doctype\": \"Material Request\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"route\":\"#List/Material Request/Report/Pending Requests\"\r\n\t\t\t\t}\r\n\t\t\t]"
+  },
+  {
+   "hidden": 0,
+   "label": "Action Items",
+   "links": "[\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"route\": \"#Form/Item/New Item 1\",\r\n                    \"label\": \"Add Items\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Edit Items\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Stock Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"reference_doctype\": \"Stock Entry\",\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"route\":\"#Form/Stock Entry/New Stock Entry 1?stock_entry_type=Material Receipt\",\r\n                    \"label\": \"Recieving Items\"\r\n\t\t\t\t},\r\n                 {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Stock Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"route\":\"#Form/Material Request/New Material Request 1?material_request_type=Material Transfer\",\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"label\": \"Moving Items\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Freezing Request\",\r\n                    \"dependencies\": [\"Item\"],\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"route\":\"#Form/Disabling Items/New Disabling Items 1\",\r\n                    \"label\": \"Disabling Items\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"route\":\"#Form/Disposing Items/New Disposing Items 1\",\r\n                    \"label\": \"Disposing Items\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Physical Count Reconciliation\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"route\":\"#Form/Physical Count Reconciliation/New Physical Count Reconciliation 1\",\r\n                    \"label\": \"Physical Count\"\r\n\t\t\t\t}\r\n\t\t\t]"
+  },
+  {
+   "hidden": 0,
+   "label": "Action Items List",
+   "links": "[\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"route\": \"#List/Item/List\",\r\n                    \"label\": \"Items List\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"route\": \"#List/Item/Report/Edited Items List\",\r\n                    \"label\": \"Edited Items List\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Stock Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"reference_doctype\": \"Stock Entry\",\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"route\":\"#List/Stock Entry/List?stock_entry_type=Material Receipt\",\r\n                    \"label\": \"Recieving Items List\"\r\n\t\t\t\t},\r\n\t\t\t\t {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Quality Inspection\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"reference_doctype\": \"Quality Inspection\",\r\n                    \"label\": \"Quality Inspection List\"\r\n\t\t\t\t},\r\n                 {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Stock Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"route\":\"#List/Stock Entry/List?stock_entry_type=Material Transfer\",\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"label\": \"Moving Items List\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Disabling Items\",\r\n                    \"dependencies\": [\"Item\"],\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"route\":\"#List/Disabling Items/List\",\r\n                    \"label\": \"Disabled Items List\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"dependencies\": [\"Item\"],\r\n                    \"label\": \"Disposing Items List\",\r\n                    \"route\":\"#List/Disposing Items/List\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"doctype\",\r\n\t\t\t\t\t\"name\": \"Physical Count Reconciliation\",\r\n\t\t\t\t\t\"route\":\"#List/Physical Count Reconciliation/List\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Physical Count List\"\r\n\t\t\t\t}\r\n\t\t\t]"
+  },
+  {
+   "hidden": 0,
+   "label": "Stock Reports",
+   "links": "[\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Item Additions Report\",\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"route\":\"List/Item/Report/Item Additions Report\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Item Additions Report\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Edited Items Report\",\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"route\":\"List/Item/Report/Edited Items Report\",\r\n                    \"label\": \"Edited Items Report\"\r\n                    \r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Recieved Items\",\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n                    \"label\": \"Recieved Items Report\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Movement Report\",\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n                     \"label\": \"Movement Report\"\r\n\t\t\t\t},\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Stock Ageing\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"route\":\"#List/Item/Report/Disabled Items\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n                     \"label\": \"Disabled Item Report\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Physical Count Reconciliation Report\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n\t\t\t\t\t\"breadcrumbs\" : \"Senergy\",\r\n                    \"label\": \"Physical Count Reconciliation Report\"\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Item Card\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"route\":\"#List/Item/Report/Item Card\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"],\r\n                    \"label\": \"Item Card\"\r\n\t\t\t\t}\r\n\t\t\t]"
+  },
+  {
+   "hidden": 0,
+   "label": "Analysis Report",
+   "links": "[\r\n\t\t\t\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Stock Ageing Report\",\r\n\t\t\t\t\t\"doctype\": \"Item\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Stock Ageing\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Slow Moving Report\",\r\n\t\t\t\t\t\"doctype\": \"Stock Ledger Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Slow Moving\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"onboard\": 1,\r\n\t\t\t\t\t\"name\": \"Item Price Stock\",\r\n                    \"label\": \"Pricing Analysis\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t}\r\n\t\t\t]"
+  },
+  {
+   "hidden": 0,
+   "label": "Management Report",
+   "links": "[\r\n\t\t\t\t{\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Inventory Listing\",\r\n\t\t\t\t\t\"doctype\": \"Stock Ledger Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"Inventory Listing\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t},\r\n                {\r\n\t\t\t\t\t\"type\": \"report\",\r\n\t\t\t\t\t\"is_query_report\": true,\r\n\t\t\t\t\t\"name\": \"Stock Ledger\",\r\n\t\t\t\t\t\"doctype\": \"Stock Ledger Entry\",\r\n\t\t\t\t\t\"onboard\": 1,\r\n                    \"label\": \"My Dashboard\",\r\n                    \"route\": \"#dashboard/Inventory\",\r\n\t\t\t\t\t\"dependencies\": [\"Item\"]\r\n\t\t\t\t}\r\n\t\t\t]"
+  }
+ ],
+ "cards_label": "Main Menu",
+ "category": "Modules",
+ "charts": [],
+ "creation": "2020-08-05 03:38:31.525222",
+ "developer_mode_only": 0,
+ "disable_user_customization": 1,
+ "docstatus": 0,
+ "doctype": "Desk Page",
+ "extends_another_page": 0,
+ "hide_custom": 0,
+ "idx": 0,
+ "is_standard": 1,
+ "label": "Inventory Management",
+ "modified": "2020-09-08 08:50:01.584401",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Inventory Management",
+ "onboarding": "Stock",
+ "owner": "Administrator",
+ "pin_to_bottom": 0,
+ "pin_to_top": 0,
+ "shortcuts": []
+}

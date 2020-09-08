@@ -82,7 +82,10 @@ app_include_js = "/assets/js/senergy.min.js"
 doc_events = {
 	"Asset Maintenance Log": {
 		"on_submit": "senergy.custom.maintenance_completion_mail"
-    }
+    },
+	# "Disposing Items": {
+	# 	"after_insert": "senergy.senergy.doctype.disposing_items.disposing_items.update_wfs"
+    # }
 	# "*": {
 	# 	"on_update": "method",
 	# 	"on_cancel": "method",

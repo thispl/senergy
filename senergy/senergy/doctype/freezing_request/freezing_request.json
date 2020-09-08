@@ -10,11 +10,11 @@
   "item_status",
   "item_name",
   "item_group",
-  "company",
-  "country",
   "column_break_2",
   "raised_by",
   "verified_by",
+  "company",
+  "country",
   "section_break_4",
   "description",
   "workflow_state",
@@ -87,7 +87,7 @@
    "fetch_from": "item.item_group",
    "fieldname": "item_group",
    "fieldtype": "Read Only",
-   "label": "Item Group"
+   "label": "Category"
   },
   {
    "fetch_from": "item.company",
@@ -101,7 +101,7 @@
    "fetch_from": "company.country",
    "fieldname": "country",
    "fieldtype": "Read Only",
-   "label": "Country"
+   "label": "Location"
   },
   {
    "fieldname": "verified_by",
@@ -113,7 +113,7 @@
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-07-27 13:15:23.472971",
+ "modified": "2020-08-21 18:51:02.389175",
  "modified_by": "Administrator",
  "module": "Senergy",
  "name": "Freezing Request",

@@ -1,6 +1,6 @@
   
 {
 	"js/senergy.min.js": [
-		"public/js/senergy.js"
+		"public/js/mute_learn.js"
 	]
 }

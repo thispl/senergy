@@ -1,0 +1,124 @@
+{
+ "actions": [],
+ "autoname": "DI-.####",
+ "creation": "2020-08-21 18:42:42.263831",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "item_code",
+  "serial_number",
+  "item_name",
+  "column_break_3",
+  "location",
+  "category",
+  "warehouse",
+  "section_break_9",
+  "reason",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "serial_number",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Serial Number",
+   "options": "Serial No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Company",
+   "options": "Company",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "company.country",
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Location"
+  },
+  {
+   "fetch_from": "serial_number.warehouse",
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Small Text",
+   "label": "Reason for Disabling",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Disabling Items",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "item_code.item_group",
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Item Group",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2020-09-01 14:12:07.186605",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Disabling Items",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,92 @@
+{
+ "actions": [],
+ "creation": "2020-08-12 15:29:49.281099",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "asset",
+  "description",
+  "item_code",
+  "location",
+  "purchase_date",
+  "gbv",
+  "depreciation_value",
+  "nbv"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "asset",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Asset",
+   "options": "Asset",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "asset.item_code",
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "asset.location",
+   "fieldname": "location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Location",
+   "options": "Location"
+  },
+  {
+   "columns": 2,
+   "fetch_from": "asset.purchase_date",
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Purchase Date"
+  },
+  {
+   "columns": 1,
+   "fetch_from": "asset.gross_purchase_amount",
+   "fieldname": "gbv",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "GBV"
+  },
+  {
+   "columns": 1,
+   "fieldname": "nbv",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "NBV"
+  },
+  {
+   "columns": 2,
+   "fieldname": "depreciation_value",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Depreciation Value"
+  },
+  {
+   "fetch_from": "asset.asset_name",
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "label": "Description"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2020-08-15 16:19:23.900667",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Disposal Assets",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

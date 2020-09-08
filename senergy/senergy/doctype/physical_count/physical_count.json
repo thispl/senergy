@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "creation": "2020-08-07 19:03:08.569907",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "company",
+  "country",
+  "warehouse",
+  "item",
+  "item_name",
+  "description",
+  "item_location",
+  "store_quantity",
+  "physical_quantity",
+  "difference_quantity"
+ ],
+ "fields": [
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "warehouse",
+   "fieldtype": "Link",
+   "label": "Warehouse",
+   "options": "Warehouse"
+  },
+  {
+   "columns": 1,
+   "fieldname": "store_quantity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Store Quantity"
+  },
+  {
+   "columns": 2,
+   "fieldname": "item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item",
+   "options": "Item"
+  },
+  {
+   "columns": 1,
+   "fieldname": "physical_quantity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Physical Quantity",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "item.item_name",
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "label": "Item Name"
+  },
+  {
+   "columns": 1,
+   "fieldname": "difference_quantity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Difference Quantity"
+  },
+  {
+   "columns": 2,
+   "fieldname": "description",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Description"
+  },
+  {
+   "columns": 2,
+   "fieldname": "item_location",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Location",
+   "options": "Item Location"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2020-09-01 15:52:05.077658",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Physical Count",
+ "owner": "Administrator",
+ "permissions": [],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

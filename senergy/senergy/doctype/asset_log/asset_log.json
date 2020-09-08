@@ -1,0 +1,164 @@
+{
+ "actions": [],
+ "autoname": "field:asset_id",
+ "creation": "2020-08-14 11:52:21.346596",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "asset_id",
+  "company",
+  "asset_name",
+  "status",
+  "department",
+  "cost_center",
+  "asset_group",
+  "asset_sub_group",
+  "asset_addition",
+  "vendor_name",
+  "gross_purchase_amount",
+  "opening_accumulated_depreciation",
+  "depreciated_amount",
+  "available_for_use_date",
+  "location",
+  "asset_category",
+  "purchase_date",
+  "asset_value",
+  "net_asset_value",
+  "physical_status",
+  "tools_condition"
+ ],
+ "fields": [
+  {
+   "fieldname": "asset_id",
+   "fieldtype": "Data",
+   "label": "Asset ID",
+   "unique": 1
+  },
+  {
+   "fieldname": "asset_name",
+   "fieldtype": "Data",
+   "label": "Asset Name"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Data",
+   "label": "Status"
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Data",
+   "label": "Department"
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Data",
+   "label": "Cost Center"
+  },
+  {
+   "fieldname": "asset_group",
+   "fieldtype": "Data",
+   "label": "Asset Group"
+  },
+  {
+   "fieldname": "asset_sub_group",
+   "fieldtype": "Data",
+   "label": "Asset Sub Group"
+  },
+  {
+   "fieldname": "asset_addition",
+   "fieldtype": "Data",
+   "label": "Asset Addition"
+  },
+  {
+   "fieldname": "vendor_name",
+   "fieldtype": "Data",
+   "label": "Vendor Name"
+  },
+  {
+   "fieldname": "gross_purchase_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Purchase Amount"
+  },
+  {
+   "fieldname": "opening_accumulated_depreciation",
+   "fieldtype": "Currency",
+   "label": "Opening Accumulated Depreciation"
+  },
+  {
+   "fieldname": "depreciated_amount",
+   "fieldtype": "Currency",
+   "label": "Depreciated Amount"
+  },
+  {
+   "fieldname": "available_for_use_date",
+   "fieldtype": "Date",
+   "label": "Available for Use Date"
+  },
+  {
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fieldname": "asset_category",
+   "fieldtype": "Data",
+   "label": "Asset Category"
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date"
+  },
+  {
+   "fieldname": "asset_value",
+   "fieldtype": "Currency",
+   "label": "Asset Value"
+  },
+  {
+   "fieldname": "net_asset_value",
+   "fieldtype": "Currency",
+   "label": "Net Asset Value"
+  },
+  {
+   "fieldname": "physical_status",
+   "fieldtype": "Data",
+   "label": "Physical Status"
+  },
+  {
+   "fieldname": "tools_condition",
+   "fieldtype": "Data",
+   "label": "Tools Condition"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  }
+ ],
+ "links": [],
+ "modified": "2020-08-14 13:01:59.675614",
+ "modified_by": "Administrator",
+ "module": "Senergy",
+ "name": "Asset Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

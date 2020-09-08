@@ -1,0 +1,46 @@
+{% extends "templates/web.html" %}
+
+{% block title %}{{ _("Request for Quotation") }}{% endblock %}
+
+{% block script %}
+<script src="request_for_quotation/index.js"></script>
+{% endblock %}
+
+{% block page_content %}
+<div class="container">
+    <h3>Request for Quotations</h3>
+    <table class="table bordered">
+        <tr>
+            <th>S.No</th>
+            <th>RFQ</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {% for rfq in rfq_list %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ rfq.rfq }}</td>
+            {% if rfq.po_released %}
+            <td>PO Released</td>
+            {% else %}
+                {% if rfq.submitted %}
+                    <td>Pending for PO</td>
+                {% else %}    
+                    <td>Pending for Submission</td>
+                {% endif %}    
+            {% endif %}
+            {% if rfq.submitted %}
+            <td><b><a href="/supplier-quotation?name={{ rfq.sqtn }}">Submitted</a></b></td>
+            {% else %}
+            <td> <button class="btn btn-primary" onclick="submit('{{rfq.rfq}}')">Submit</button>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</div>
+
+</div>
+
+{% endblock %}
