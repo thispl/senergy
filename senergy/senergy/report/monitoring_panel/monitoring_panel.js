@@ -141,9 +141,9 @@ frappe.require("assets/erpnext/js/financial_statements.js", function () {
 		},
 		// "formatter": erpnext.financial_statements.formatter,
 		"tree": true,
-		"name_field": "warehouse",
-		"parent_field": "parent_warehouse",
-		"initial_depth": 3,
+		"name_field": "item_code",
+		// "parent_field": "parent_warehouse",
+		// "initial_depth": 3,
 		onload: function (frm) {
 			frappe.breadcrumbs.add('Senergy');
 		}

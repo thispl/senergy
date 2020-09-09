@@ -51,8 +51,16 @@ def execute(filters=None):
     conversion_factors = {}
 
     _func = lambda x: x[1]
-    
+    item_head = []
     for (company, item, warehouse) in sorted(iwb_map):
+        if not item in item_head:
+            item_info = get_parent_details(item, filters)
+            data.append({
+                'item_code': item,
+                'bal_qty': item_info.bal_qty,
+                'indent': 0
+                })
+            item_head.append(item)
         if item_map.get(item):
             qty_dict = iwb_map[(company, item, warehouse)]
             item_reorder_level = 0
@@ -77,6 +85,7 @@ def execute(filters=None):
                 'country': frappe.get_value('Warehouse',warehouse,'country'),
                 'reorder_level': item_reorder_level,
                 'reorder_qty': item_reorder_qty,
+                'indent': 1
             }
             report_data.update(item_map[item])
             report_data.update(qty_dict)
@@ -109,35 +118,37 @@ def execute(filters=None):
     
     for d in data:
         status = 'Ideal Quantity'
-        if int(d['bal_qty']) <= int(d['reorder_level']):
-            status = 'Low Quantity'
+        if d['indent'] != 0:
+            if int(d['bal_qty']) <= int(d['reorder_level']):
+                status = 'Low Quantity'
 
-        frozen = frappe.get_value('Item',d['item_code'],'disabled')
-        if frozen:
-            status = 'Frozen Item'	
+            frozen = frappe.get_value('Item',d['item_code'],'disabled')
+            if frozen:
+                status = 'Frozen Item'	
 
 
-        if filters.get("currency"):
-            default_currency = d['bal_val_cur']
-            selected_currency = filters.currency
-            exchange_rate = frappe.get_value('Currency Exchange',{'from_currency':default_currency,'to_currency':selected_currency},['exchange_rate'])
-            if filters.get('currency') == default_currency:
-                exchange_rate = 1
-            sc_val_cur = frappe.db.get_value('Currency',selected_currency,['name'])
-            sc_val = d['bal_val'] * flt(exchange_rate)	
+            if filters.get("currency"):
+                default_currency = d['bal_val_cur']
+                selected_currency = filters.currency
+                exchange_rate = frappe.get_value('Currency Exchange',{'from_currency':default_currency,'to_currency':selected_currency},['exchange_rate'])
+                if filters.get('currency') == default_currency:
+                    exchange_rate = 1
+                sc_val_cur = frappe.db.get_value('Currency',selected_currency,['name'])
+                sc_val = d['bal_val'] * flt(exchange_rate)	
 
-    # if no stock ledger entry found return
-        converted_value = {
-            'sc_currency': sc_val_cur,
-            'sc_value' : sc_val,
-            'status': status
-        }
-        d.update(converted_value)
+            # if no stock ledger entry found return
+            converted_value = {
+                'sc_currency': sc_val_cur,
+                'sc_value' : sc_val,
+                'status': status
+            }
+            d.update(converted_value)
     data = sorted(data, key=lambda x: x['item_code'])
     from collections import defaultdict
     tmp = defaultdict(list)
     for item in data:
-        tmp[item['item_code']].append([item['warehouse'],item['bal_qty']])
+        if item['indent'] != 0:
+            tmp[item['item_code']].append([item['warehouse'],item['bal_qty']])
     parsed_data = [{'item_code':k, 'warehouse':v[0][0], 'indent':1} for k,v in tmp.items()]
     # frappe.errprint(parsed_data)
     return columns,data
@@ -148,11 +159,13 @@ def get_columns(filters):
     columns = [
         # {"label": _("Country"), "fieldname": "country", "fieldtype": "Link", "options": "Country", "width": 80},
         # {"label": _("Company"), "fieldname": "company", "fieldtype": "Link", "options": "Company", "width": 200},
-        {"label": _("Department"), "fieldname": "department", "fieldtype": "Link", "options": "Department", "width": 200},
+        {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 300},
         {"label": _("Category"), "fieldname": "item_group", "fieldtype": "Link", "options": "Item Group", "width": 150},
+        {"label": _("Department"), "fieldname": "department", "fieldtype": "Link", "options": "Department", "width": 200},
+        # {"label": _("Category"), "fieldname": "item_group", "fieldtype": "Link", "options": "Item Group", "width": 150},
         {"label": _("Supplier"), "fieldname": "supplier", "fieldtype": "Data","width": 150},
         {"label": _("Part No."), "fieldname": "supplier_part_no", "fieldtype": "Data", "width": 150},
-        {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 300},
+        # {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 300},
         {"label": _("Warehouse"), "fieldname": "warehouse", "fieldtype": "Link", "options": "Warehouse", "width": 300},
         {"label": _("Balance Qty"), "fieldname": "bal_qty", "fieldtype": "Float", "width": 100, "convertible": "qty"},
         {"label": _("Status"), "fieldname": "status", "fieldtype": "Data", "width": 150}
@@ -377,3 +390,8 @@ def get_variant_values_for(items):
 def get_sle_countries():
     country_list = frappe.db.sql_list("""select distinct country from `tabStock Ledger Entry` ORDER BY country DESC""")
     return "\n".join(str(country) for country in country_list)
+
+def get_parent_details(item, filters):
+    conditions = get_conditions(filters)
+    result = frappe.db.sql('''select sum(sle.actual_qty) as bal_qty from `tabStock Ledger Entry` sle where sle.item_code = %(item)s {condition}'''.format(condition=conditions), {'item': item}, as_dict=1)
+    return result[0] if result else frappe._dict({'bal_qty': 0.0})
