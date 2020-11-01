@@ -8,13 +8,14 @@
  "field_order": [
   "company",
   "item_code",
-  "serial_number",
   "item_name",
+  "dispose_type",
   "column_break_3",
   "location",
   "category",
-  "warehouse",
   "section_break_9",
+  "items",
+  "section_break_14",
   "reason",
   "column_break_11",
   "procedure",
@@ -27,14 +28,6 @@
    "in_list_view": 1,
    "label": "Item Code",
    "options": "Item",
-   "reqd": 1
-  },
-  {
-   "fieldname": "serial_number",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Serial Number",
-   "options": "Serial No",
    "reqd": 1
   },
   {
@@ -72,14 +65,6 @@
    "options": "Location"
   },
   {
-   "fetch_from": "serial_number.warehouse",
-   "fieldname": "warehouse",
-   "fieldtype": "Link",
-   "label": "Warehouse",
-   "options": "Warehouse",
-   "read_only": 1
-  },
-  {
    "fieldname": "section_break_9",
    "fieldtype": "Section Break"
   },
@@ -115,11 +100,27 @@
    "fieldname": "procedure",
    "fieldtype": "Small Text",
    "label": "Procedure for Disposing"
+  },
+  {
+   "fieldname": "dispose_type",
+   "fieldtype": "Select",
+   "label": "Dispose Type",
+   "options": "Scrap\nResell"
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Disposing Item Table"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
   }
  ],
  "is_submittable": 1,
  "links": [],
- "modified": "2020-09-01 14:12:33.957873",
+ "modified": "2020-09-23 17:56:18.572499",
  "modified_by": "Administrator",
  "module": "Senergy",
  "name": "Disposing Items",

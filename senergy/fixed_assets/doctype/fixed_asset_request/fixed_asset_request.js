@@ -8,7 +8,10 @@ frappe.ui.form.on('Fixed Asset Request', {
 		frappe.breadcrumbs.add("Assets", "Fixed Asset Request");
 	},
 	onload_post_render:function(frm) {
-	    frm.set_value('req_by',frappe.session.user);
+		if(frm.doc.__islocal){
+			frm.set_value('req_by',frappe.session.user);
+		}
+	    
 		// your code here
 		frm.trigger("set_filter")
 	},

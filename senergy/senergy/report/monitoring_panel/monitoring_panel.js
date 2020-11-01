@@ -23,14 +23,6 @@ frappe.require("assets/erpnext/js/financial_statements.js", function () {
 				"default": frappe.datetime.get_today()
 			},
 			{
-				"fieldname": "company",
-				"label": __("Company"),
-				"fieldtype": "Link",
-				"width": "80",
-				"reqd": 1,
-				"options": "Company",
-			},
-			{
 				"fieldname": "country",
 				"label": __("Country"),
 				"fieldtype": "Link",
@@ -44,6 +36,14 @@ frappe.require("assets/erpnext/js/financial_statements.js", function () {
 						}
 					};
 				}
+			},
+			{
+				"fieldname": "company",
+				"label": __("Company"),
+				"fieldtype": "Link",
+				"width": "80",
+				"reqd": 1,
+				"options": "Company",
 			},
 			{
 				"fieldname": "item_group",
@@ -104,16 +104,14 @@ frappe.require("assets/erpnext/js/financial_statements.js", function () {
 			},
 		],
 		"formatter": function (value, row, column, data, default_formatter) {
-			if (column.fieldname=="item_code") {
-				value = data["item_code"];
-
-				// column.link_onclick =
-				// 	"frappe.query_reports['Profitability Analysis'].open_profit_and_loss_statement(" + JSON.stringify(data) + ")";
-				column.is_tree = true;
-			}
-
 			value = default_formatter(value, row, column, data);
-
+			$.each(row,function(i,d){
+				if(d.colIndex == 0){
+					d.html = 10
+					console.log(d.html)
+				}
+				
+			});
 			if (data["status"] === 'Low Quantity') {
 				if (column['fieldname'] == 'status') {
 					value = "<span style='color:red!important;font-weight:bold'>" + value + "</span>";
@@ -131,19 +129,8 @@ frappe.require("assets/erpnext/js/financial_statements.js", function () {
 					value = "<span style='color:blue!important;font-weight:bold'>" + value + "</span>";
 				}
 			}
-
-			// if (!data['parent_warehouse']) {
-			// 	value = $(`<span>${value}</span>`);
-			// 	var $value = $(value).css("font-weight", "bold");
-			// 	value = $value.wrap("<p></p>").parent().html();
-			// }
 			return value;
 		},
-		// "formatter": erpnext.financial_statements.formatter,
-		"tree": true,
-		"name_field": "item_code",
-		// "parent_field": "parent_warehouse",
-		// "initial_depth": 3,
 		onload: function (frm) {
 			frappe.breadcrumbs.add('Senergy');
 		}

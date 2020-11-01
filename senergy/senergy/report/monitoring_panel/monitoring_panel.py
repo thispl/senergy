@@ -56,7 +56,7 @@ def execute(filters=None):
         if not item in item_head:
             item_info = get_parent_details(item, filters)
             data.append({
-                'item_code': item,
+                'item_code': frappe.get_value("Item",item,"item_name"),
                 'bal_qty': item_info.bal_qty,
                 'indent': 0
                 })
@@ -76,10 +76,11 @@ def execute(filters=None):
                 supplier_part_no = supplier_info[1]
             report_data = {
                 'item_code': item,
+                # 'item_name':'test',
                 'warehouse': warehouse,
                 'company': company,
                 'supplier': supplier,
-                'indent': 1,
+                # 'indent': 1,
                 'supplier_part_no': supplier_part_no,
                 'bal_val_cur':frappe.db.get_value('Company',company, "default_currency"),
                 'country': frappe.get_value('Warehouse',warehouse,'country'),
@@ -143,14 +144,6 @@ def execute(filters=None):
                 'status': status
             }
             d.update(converted_value)
-    data = sorted(data, key=lambda x: x['item_code'])
-    from collections import defaultdict
-    tmp = defaultdict(list)
-    for item in data:
-        if item['indent'] != 0:
-            tmp[item['item_code']].append([item['warehouse'],item['bal_qty']])
-    parsed_data = [{'item_code':k, 'warehouse':v[0][0], 'indent':1} for k,v in tmp.items()]
-    # frappe.errprint(parsed_data)
     return columns,data
 
 def get_columns(filters):
@@ -159,16 +152,17 @@ def get_columns(filters):
     columns = [
         # {"label": _("Country"), "fieldname": "country", "fieldtype": "Link", "options": "Country", "width": 80},
         # {"label": _("Company"), "fieldname": "company", "fieldtype": "Link", "options": "Company", "width": 200},
-        {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 300},
+        {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 400},
+        # {"label": _("Item Name"), "fieldname": "item_name", "fieldtype": "Data","width": 200},
         {"label": _("Category"), "fieldname": "item_group", "fieldtype": "Link", "options": "Item Group", "width": 150},
-        {"label": _("Department"), "fieldname": "department", "fieldtype": "Link", "options": "Department", "width": 200},
+        {"label": _("Department"), "fieldname": "department", "fieldtype": "Link", "options": "Department", "width": 100},
         # {"label": _("Category"), "fieldname": "item_group", "fieldtype": "Link", "options": "Item Group", "width": 150},
-        {"label": _("Supplier"), "fieldname": "supplier", "fieldtype": "Data","width": 150},
-        {"label": _("Part No."), "fieldname": "supplier_part_no", "fieldtype": "Data", "width": 150},
+        {"label": _("Supplier"), "fieldname": "supplier", "fieldtype": "Data","width": 80},
+        {"label": _("Part No."), "fieldname": "supplier_part_no", "fieldtype": "Data", "width": 100},
         # {"label": _("Item"), "fieldname": "item_code", "fieldtype": "Link", "options": "Item", "width": 300},
-        {"label": _("Warehouse"), "fieldname": "warehouse", "fieldtype": "Link", "options": "Warehouse", "width": 300},
-        {"label": _("Balance Qty"), "fieldname": "bal_qty", "fieldtype": "Float", "width": 100, "convertible": "qty"},
-        {"label": _("Status"), "fieldname": "status", "fieldtype": "Data", "width": 150}
+        {"label": _("Warehouse"), "fieldname": "warehouse", "fieldtype": "Link", "options": "Warehouse", "width": 200},
+        {"label": _("Balance Qty"), "fieldname": "bal_qty", "fieldtype": "Data", "width": 100, "convertible": "qty"},
+        {"label": _("Status"), "fieldname": "status", "fieldtype": "Data", "width": 100}
     ]
 
     if filters.get('show_stock_ageing_data'):
