@@ -144,6 +144,7 @@ def execute(filters=None):
                 'status': status
             }
             d.update(converted_value)
+        frappe.errprint(data)
     return columns,data
 
 def get_columns(filters):
